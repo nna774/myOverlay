@@ -1,7 +1,7 @@
 # http://thawedoutnow.blogspot.jp/2014/10/softether-vpn-on-gentoo.html
 EAPI=5
 
-inherit eutils
+inherit eutils systemd
 
 DESCRIPTION="SoftEther VPN"
 
@@ -54,6 +54,7 @@ src_install() {
 		dosym /etc/softether/lang.config /${dst}/vpnserver/lang.config
 		dosym /etc/softether/backup.vpn_server.config /${dst}/vpnserver/backup.vpn_server.config
 		mkdir -p ${D}/var/log/softether
+		systemd_dounit "${FILESDIR}"/vpnserver.service
 	fi
 	if use cmd; then
 		dosym /${dst}/vpncmd/vpncmd /usr/sbin/vpncmd

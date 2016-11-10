@@ -1,0 +1,20 @@
+[Unit]
+Description=SoftEther VPN Server
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/opt/vpnserver/vpnserver start
+ExecStop=/opt/vpnserver/vpnserver stop
+Restart=on-failure
+
+# Hardening
+PrivateTmp=yes
+ProtectHome=yes
+ProtectSystem=full
+#ReadOnlyDirectories=/
+#ReadWriteDirectories=-/usr/lib/softethervpn/vpnserver
+
+[Install]
+WantedBy=multi-user.target
+
