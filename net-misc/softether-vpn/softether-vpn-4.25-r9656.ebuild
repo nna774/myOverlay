@@ -58,5 +58,6 @@ src_install() {
 	fi
 	if use cmd; then
 		dosym /${dst}/vpncmd/vpncmd /usr/sbin/vpncmd
+		dosym /${dst}/vpncmd/hamcore.se2 /usr/sbin/hamcore.se2
 	fi
 }
